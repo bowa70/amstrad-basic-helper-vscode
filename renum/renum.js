@@ -29,7 +29,7 @@ function Renumber(lines) {
     lines.forEach(line => {
         // in theory we should differentiate simple jump instructions from ON xx GOTO or ON xx GOSUB instructions
         // but we rely on the fact that we cannot renumber an invalid document by design
-        var matches = [...line.lineString.matchAll(/(?:goto|gosub|restore|then|else)(?:\ +[\d,\ ]+)/gi)];
+        var matches = [...line.lineString.matchAll(/(?:goto|gosub|restore|resume|then|else)(?:\ +[\d,\ ]+)/gi)];
         for (const match of matches.reverse()) {
             var offset = match.index;            
             var lineNumbers = [...match[0].matchAll(/\d+/g)];
